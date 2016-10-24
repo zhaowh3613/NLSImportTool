@@ -1,0 +1,142 @@
+﻿<Window x:Class="NLSImportTool.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NLSImportTool"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="800">
+    <!--DataContext="{Binding MainViewModel, Source={StaticResource Locator}}">-->
+    <!--<Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+    
+        <Grid Grid.Row="0" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            --><!--<TextBlock x:Name="ChoosekeyFileText" Margin="150,10,0,10" HorizontalAlignment="Left" Grid.Row="0" Text=" Choose the Key profile"></TextBlock>--><!--
+            <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0">
+                --><!--<TextBox x:Name="SelectedFolderTexBox_key" Text="D:\\NLS\\Key.docx"  IsReadOnly="True" FontSize="15" Padding="8" Width="300" Margin="20,0" Background="Wheat"></TextBox>
+                <Button Width="150" Height="40" Content="Pick File" Click="Choose_KeyFile_Button_Click"></Button>--><!--
+                <Button Width="150" Height="40" Content="Config keys" Click="Choose_KeyFile_Button_Click"></Button>
+            </StackPanel>
+            --><!--<TextBlock x:Name="ChooseKeyFileErrorText" Foreground="Red" Margin="150,10,0,0" HorizontalAlignment="Left" Grid.Row="2" Text=" Choose key file"></TextBlock>--><!--
+        </Grid>
+        <Grid Grid.Row="1" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="ChooseNLSrootFolderText" HorizontalAlignment="Left" Margin="150,10,0,0" Grid.Row="0" Text="Choose NLS root folder"></TextBlock>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0">
+                <TextBox x:Name="SelectedFolderTexBox_NLS" Text="D:\\NLS" IsReadOnly="True" Padding="8" FontSize="15" Width="300" Margin="20,0" Background="Wheat"></TextBox>
+                <Button Width="150" Height="40" Content="Pick Folder" Click="Choose_Folder_Button_Click"></Button>
+            </StackPanel>
+            <TextBlock x:Name="ChooseNLSrootFolderErrorText" Foreground="Red"  HorizontalAlignment="Left" Margin="150,10,0,0" Grid.Row="2" Text="Choose NLS root folder"></TextBlock>
+        </Grid>
+
+        <Grid Grid.Row="2" Margin="20" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="ChooseProjectStrinsFolderText" Margin="150,10,0,10" HorizontalAlignment="Left" Grid.Row="0" Text=" Choose strings folder of target project"></TextBlock>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0">
+                <TextBox x:Name="SelectedFolderTexBox_Porject" Text=""  IsReadOnly="True" Padding="8" Width="300" Margin="20,0" Background="Wheat"></TextBox>
+                <Button Width="150" Height="40" Content="Pick Folder" Click="Choose_TargeFolder_Button_Click"></Button>
+            </StackPanel>
+            <TextBlock x:Name="ChooseProjectStrinsFolderErrorText" Foreground="Red" Margin="150,10,0,0" HorizontalAlignment="Left" Grid.Row="2" Text=" Choose strings folder of target project"></TextBlock>
+        </Grid>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,50">
+
+            <Button Width="150" Height="80" Content="Load key" Margin="50,0" Click="LoadKey_Button_Click"></Button>
+        <Button Width="150" Height="80" Content="Execute" Click="Execute_Button_Click"></Button>
+        </StackPanel>
+        --><!--<TextBlock x:Name="LogTexBox" Text="{Binding LogText, Mode=TwoWay}" Width="600" Height="100"></TextBlock>--><!--
+    </Grid>-->
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" x:Name="FirstPageGrid" Visibility="Visible">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Margin="10,5,0,0" FontSize="14" VerticalAlignment="Center" Text="copy your keys to here and please ensure the order is correct with your tanslation resource."></TextBlock>
+            <Button x:Name="ClearBtn" Grid.Row="0" Width="50" Height="30" Margin="10,5,10,0" HorizontalAlignment="Right" Content="Clear" Click="ClearBtn_Click"></Button>
+            <RichTextBox x:Name="KeyContentRtb" Grid.Row="1" Height="400" Margin="10" ScrollViewer.VerticalScrollBarVisibility="Auto"></RichTextBox>
+        </Grid>
+        <Grid Grid.Row="0" x:Name="SecondPageGrid" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Vertical" Margin="0,100,0,0">
+                <TextBlock x:Name="ChooseNLSrootFolderText" HorizontalAlignment="Left" Margin="170,5,0,5"  Text="FROM: where is your language resource root folder?"></TextBlock>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0">
+                    <TextBox x:Name="SelectedFolderTexBox_NLS" Text="{Binding NLSPath,Mode=TwoWay}" IsReadOnly="True" Padding="8" FontSize="15" Width="300" Margin="20,0" Background="Wheat"></TextBox>
+                    <Button Width="150" Height="40" Content="Pick Folder" Click="Choose_Folder_Button_Click"></Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="170,10,0,0">
+                    <RadioButton  Margin="0,0,0,0" Name="ManualRaidoButton" GroupName="IsManual" Content="Manual" Checked="ManualRaidoButton_Checked"></RadioButton>
+                    <RadioButton  Margin="10,0,0,0" Name="AutoImportRaidoButton" GroupName="IsManual" Content="Auto import to your project directly" Checked="ManualRaidoButton_Checked"></RadioButton>
+                </StackPanel>
+               
+            </StackPanel>
+
+            <StackPanel x:Name="AutoModeGrid" Orientation="Vertical" Margin="0,10,0,0" Grid.Row="1">
+                <TextBlock x:Name="ChooseImportTargetFolderText" HorizontalAlignment="Left" Margin="170,5,0,5"  Text="TO: where is your import target resource root folder?"></TextBlock>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0">
+                    <TextBox x:Name="SelectedFolderTexBox_ImportTarget" Text="{Binding ImportTargetPath,Mode=TwoWay}" IsReadOnly="True" Padding="8" FontSize="15" Width="300" Margin="20,0" Background="Wheat"></TextBox>
+                    <Button Width="150" Height="40" Content="Pick Folder" Click="Choose_TargetFolder_Button_Click"></Button>
+                </StackPanel>
+            </StackPanel>
+            
+            <Grid  Grid.Row="2">
+                <StackPanel Margin="0,80">
+                    <ProgressBar Value="{Binding ProgressBarValue,Mode=TwoWay}" Maximum="100" Minimum="0"></ProgressBar>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"  Text="Please wait..."></TextBlock>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5" Text="{Binding ProcessStatus, Mode=TwoWay}" TextWrapping="Wrap"></TextBlock>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        
+        <Grid Grid.Row="1" Margin="10">
+            <!--<Button Width="150" Height="60" Content="Execute" Click="Execute_Button_Click"></Button>-->
+
+            <StackPanel Margin="0,0,0,10" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right">
+                <TextBlock Text="{Binding ValidateText, Mode=TwoWay}" Foreground="Red" VerticalAlignment="Center" Margin="10,0"></TextBlock>
+
+                <TextBlock Text="{Binding KeysCount, Mode=TwoWay}" VerticalAlignment="Center" Margin="10,0"></TextBlock>
+                <TextBlock Text="Keys Loaded" VerticalAlignment="Center"></TextBlock>
+                    <Button x:Name="BackButton" IsEnabled="False" Margin="10,10" Width="80" Height="30" Click="BackButton_Click">
+                    <TextBlock x:Name="Power_Section_BackDesc" x:Uid="Power_Section_BackDesc" Text="Back"></TextBlock>
+                </Button>
+                <Button x:Name="NextButton" Margin="10,10" Width="80" Height="30" Visibility="Visible" Click="NextButton_Click">
+                    <TextBlock x:Name="Power_Section_NextDesc" x:Uid="Power_Section_NextDesc" Text="Next"></TextBlock>
+                </Button>
+                <Button x:Name="OKButton" Margin="10,10" Width="80" Height="30" Visibility="Collapsed" Click="OKButton_Click">
+                    <TextBlock x:Name="Power_Section_OkDesc" x:Uid="Power_Section_OkDesc" Text="OK"></TextBlock>
+                </Button>
+                <Button  x:Name="CancelButton" Margin="20,10" Width="80" Height="30" Visibility="Collapsed" Click="CancelButton_Click">
+                    <TextBlock x:Name="Power_Section_CancelDesc" x:Uid="Power_Section_CancelDesc" Text="Cancel"></TextBlock>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
